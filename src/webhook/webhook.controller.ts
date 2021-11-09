@@ -15,4 +15,9 @@ export class WebhookController {
     // return Promise.resolve('test');
     return this.webhookService.lineWebhook(lineWebhookDto);
   }
+
+  @Get('/')
+  getLineWebhook(): Promise<void>{
+    return this.webhookService.lineMsg();
+  }
 }
