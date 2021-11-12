@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"
+    />
+    <title>My LIFF App</title>
+    <style>
+      body {
+        padding: 256px;
+      }
+      button {
+        display: none;
+        width: 50%;
+        padding: 16px 0;
+        margin: 16px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script>
+      async function sendShare() {        
+        const result = await liff.shareTargetPicker([
+        {
+          type: "flex",
+          altText: "TQM Share Flex",
+          contents: {
+            type: "bubble",
+            hero: {
+              type: "image",
+              url: "https://storage.googleapis.com/poomphat-tech.com/images/free-pa-graphic.jpg",
+              size: "full",
+              aspectRatio: "20:20",
+              aspectMode: "cover",
+              action: {
+                type: "uri",
+                uri: "https://liff.line.me/1654548648-ELVgrVV2/channels/5000175663/survey/form/01FM6WE7HNXQ5PD97Z3N74041S/preview",
+              },
+              align: "center",
+              gravity: "center",
+            },
+            footer: {
+              type: "box",
+              layout: "vertical",
+              spacing: "sm",
+              contents: [
+                {
+                  type: "button",
+                  style: "link",
+                  height: "sm",
+                  action: {
+                    type: "uri",
+                    label: "แชร์ให้เพื่อน",
+                    uri: "https://liff.line.me/1536636896-p376OZdG",
+                  },
+                },
+                {
+                  type: "spacer",
+                  size: "sm",
+                },
+              ],
+              flex: 0,
+            },
+          },
+        },
+        ]);
+        if (result) {
+          liff.closeWindow();
+        } else {
+          alert("เกิดข้อผิดพลาไม่สามารถแชร์ข้อความไปหาเพื่อนท่านได้")
+        }
+      }
+      async function main() {
+        await liff.init({ liffId: "1536636896-p376OZdG" });
+        if (liff.isLoggedIn()) {
+          sendShare();          
+        }
+      }
+      main();
+    </script>
+    <h1>Test web from nestjs</h1>
+  </body>
+</html>

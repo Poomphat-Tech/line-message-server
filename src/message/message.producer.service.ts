@@ -9,12 +9,13 @@ export class MessageProducerService {
     this.logger = new Logger('MessageProducer');
   }
 
-  async sendMessage(text:string): Promise<void> {
+  async sendMessage(uid:string, displayName:string): Promise<void> {
     this.logger.log('Call send message producer');
     const job = await this.messageQueue.add(
       'message-job',
       {
-        text: text,
+        uid: uid,
+        displayName: displayName
       },
       { delay: 3000 },
     );
