@@ -9,16 +9,21 @@ export class MessageProducerService {
     this.logger = new Logger('MessageProducer');
   }
 
-  async sendMessage(uid:string, displayName:string): Promise<void> {
-    this.logger.log('Call send message producer');
-    const job = await this.messageQueue.add(
-      'message-job',
-      {
-        uid: uid,
-        displayName: displayName
-      },
-      { delay: 3000 },
-    );
-    return;
+  async sendMessage(uid: string, displayName: string): Promise<void> {
+    try {
+      this.logger.log('Call send message producer');
+      const job = await this.messageQueue.add(
+        'message-job',
+        {
+          uid: uid,
+          displayName: displayName,
+        },
+        { attempts: 3, backoff: 5000, delay: 5000 },
+      );
+      return Promise.resolve();
+    } catch (err) {
+      this.logger.error(err.message);
+      return Promise.reject(err);
+    }
   }
 }
