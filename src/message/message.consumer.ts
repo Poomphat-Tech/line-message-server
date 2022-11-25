@@ -32,7 +32,7 @@ export class MessageConsumer {
     try {
       const textMsg: Message = {
         type: 'text',
-        text: `คุณ ${displayName} มีสิทธิ์รับฟรีประกันอุบัติเหตุ`,
+        text: `คุณ ${displayName} มีสิทธิ์รับฟรีประกันอุบัติเหตุคุ้มครอง 50,000 บาท กรอกฟอร์มได้ที่ -> https://liff.line.me/1654548648-ELVgrVV2/channels/5000175663/survey/form/01FM6WE7HNXQ5PD97Z3N74041S`,
       };
       const flexMsg: FlexMessage = {
         type: 'flex',

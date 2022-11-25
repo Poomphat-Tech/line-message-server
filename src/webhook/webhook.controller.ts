@@ -28,8 +28,7 @@ export class WebhookController {
   async mycustomerWebhook(
     @Body() mycustomerWebhookDto: MyCustomerWebhookDto,
   ): Promise<string> {
-    console.log('call mycustomer controller');
-    // Object.keys(mycustomerWebhookDto.responses).map( key => mycustomerWebhookDto.responses[key])
+    this.logger.log("mycustomerWebhook")
     return this.webhookService.receiveSurvey(mycustomerWebhookDto);
   }
 

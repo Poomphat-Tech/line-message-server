@@ -18,8 +18,9 @@ import { LineClient } from './config/client.config';
         return lineClient.client;
       },
     },
-    MessageProducerService, 
-    MessageConsumer],
+    MessageProducerService,
+    MessageConsumer,
+  ],
   exports: [MessageProducerService],
 })
 export class MessageModule {}

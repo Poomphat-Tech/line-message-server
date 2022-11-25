@@ -14,6 +14,6 @@ export class WebhookModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(WebhookMiddleware)
-      .forRoutes({ path: '/webhook/line', method: RequestMethod.POST });
+      .forRoutes({ path: '/webhook/*', method: RequestMethod.POST });
   }
 }

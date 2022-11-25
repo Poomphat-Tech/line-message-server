@@ -28,7 +28,7 @@
         "tsconfig-paths/register",        
       ],
       "sourceMaps": true,
-      "envFile": "${workspaceFolder}/.env.stage.debug",
+      "envFile": "${workspaceFolder}/.env.stage.dev",
       "cwd": "${workspaceRoot}",
       "console": "integratedTerminal",
       "protocol": "inspector"
