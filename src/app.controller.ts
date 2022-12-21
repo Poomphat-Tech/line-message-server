@@ -10,4 +10,10 @@ export class AppController {
   getHello() {
     return { message: 'test' };
   }
+
+  @Get('/socket')
+  @Render('socket')
+  getSocketPage() {
+    return { message: 'sockettt' };
+  }
 }

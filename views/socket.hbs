@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <meta
+      name='viewport'
+      content='width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover'
+    />
+    <title>Test Web Socket</title>
+    <style>
+      body { padding: 256px; } button { display: none; width: 50%; padding: 16px
+      0; margin: 16px auto; }
+    </style>
+    <script type='module'>
+      import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
+      const socket = io(); 
+      socket.on("connect", (result) => { 
+        //socket.on("message", (result) => {
+        //  console.log(result);
+        //}) 
+        socket.emit('msgToServer', 'msg from client', (result) => {
+          console.log(result);
+        })
+        console.log(socket.id)});
+    </script>
+  </head>
+  <body>
+    <h1>Test webweb {{message}}</h1>
+  </body>
+</html>

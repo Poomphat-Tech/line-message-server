@@ -12,6 +12,11 @@ async function bootstrap() {
   app.useStaticAssets(join(__dirname, '..', 'public'));
   app.setBaseViewsDir(join(__dirname, '..', 'views'));
   app.setViewEngine('hbs');
+  app.enableCors({
+    origin: ['http://localhost:3001'],
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+    credentials: true,
+  });
   const port = configService.get('PORT') || 3000;
   logger.log(`Start app at port ${port}`);
   await app.listen(port);

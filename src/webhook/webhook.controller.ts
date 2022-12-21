@@ -18,10 +18,9 @@ export class WebhookController {
   }
 
   @Post('line')
-  lineWebhook(@Body() lineWebhookDto: LineWebhookDto): Promise<string> {
-    this.logger.log(lineWebhookDto);
-    return Promise.resolve('ok');
-    // return this.webhookService.lineWebhook(lineWebhookDto);
+  async lineWebhook(@Body() lineWebhookDto: LineWebhookDto): Promise<string> {
+    await this.webhookService.lineWebhook(lineWebhookDto);
+    return 'ok';
   }
 
   @Post('mycustomer')
